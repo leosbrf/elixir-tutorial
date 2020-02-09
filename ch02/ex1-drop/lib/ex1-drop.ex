@@ -12,11 +12,22 @@ defmodule Drop do
       :world
 
   """
+
+  # you can import globally here or inside the function scope
+
+  # you also can import everything "except". i.e:
+  # import :math, except: [sin: 1, cos: 1]
+
   def fall_velocity(distance) do
-    :math.sqrt(2 * 9.8 * distance)
+    import :math, only: [sqrt: 1]
+    # Before importing :math
+    # :math.sqrt(2 * 9.8 * distance)
+
+    # After importing :math
+    sqrt(2 * 9.8 * distance)
   end
 
-  def hello do
+  defp hello do
     :world
   end
 end
